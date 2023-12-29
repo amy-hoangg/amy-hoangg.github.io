@@ -248,3 +248,26 @@ sr.reveal(`.footer, footer__container`, {
   origin: "bottom",
   distance: "30px",
 });
+
+
+function submitForm(event) {
+  event.preventDefault(); // Prevents the default form submission
+  var form = event.target;
+
+  fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+  })
+  .then(response => {
+      if (response.ok) {
+          // If the form submission is successful, clear the form
+          form.reset();
+          alert('Your message has been sent!'); // Display a success message
+      } else {
+          throw new Error('Network response was not ok.');
+      }
+  })
+  .catch(error => {
+      console.error('There has been a problem with your fetch operation:', error);
+  });
+}
