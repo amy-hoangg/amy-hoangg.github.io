@@ -260,7 +260,6 @@ function submitForm(event) {
   })
   .then(response => {
       if (response.ok) {
-          // If the form submission is successful, clear the form
           form.reset();
           alert('Your message has been sent!'); // Display a success message
       } else {
